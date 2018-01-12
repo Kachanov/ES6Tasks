@@ -1,5 +1,5 @@
 var arrayLink = [];
-var substring = "Piranha";
+
 var piranha = {
     url: "",
     count: 0
@@ -40,27 +40,36 @@ function findLink(text, url) {
 }
 
 
+/*
 get("http://marijnhaverbeke.nl/").then(
     success => {
         console.log("OK");
         console.log(arrayLink);
+        return arrayLink;
     },
     fail => console.log("Error"))
     .then(search => {
-        let request = new XMLHttpRequest();
-        request.open("GET", "http://marijnhaverbeke.nl/js1k/", true);
-        request.send();
-        if(request.status === 200){
+        for(let i = 0; i < arrayLink.length; i++) {
+            let request = new XMLHttpRequest();
+            request.open("GET", arrayLink[i], true);
+            var substring = "Piranha";
+            if(request.responseText.includes(substring)){
+                piranha.url = arrayLink[i];
+                piranha.count++;
+            }
             console.log(request.responseText);
-        }else{
-            console.log(request.status);
         }
-        /*if(request.responseText.includes(substring)){
-            piranha.url = "http://marijnhaverbeke.nl/js1k/";
-            piranha.count++;
-        }*/
+        console.log(piranha);
     });
+*/
 
-
-
-
+    let promise = fetch("http://marijnhaverbeke.nl/js1k/")
+        .then(function (response) {
+            return response.text()
+        })
+        .then(function (data) {
+            console.log(data);
+        })
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
