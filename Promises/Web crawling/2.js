@@ -65,10 +65,15 @@ get("http://marijnhaverbeke.nl/").then(
 
     let promise = fetch("http://marijnhaverbeke.nl/js1k/")
         .then(function (response) {
-            return response.text()
+            return response.text();
         })
         .then(function (data) {
             console.log(data);
+            if(data.toString().toLowerCase().includes("piranha")){
+                piranha.url = "http://marijnhaverbeke.nl/js1k/";
+                piranha.count++;
+            }
+            console.log(piranha);
         })
         .catch(function(err) {
             console.log('Fetch Error :-S', err);
