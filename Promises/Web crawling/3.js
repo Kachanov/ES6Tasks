@@ -18,7 +18,8 @@ function get(url) {
         })
 
         .then(function (data) {
-            if(data.toString().includes("piranha")){
+            let regExp = /(piranha)/i;
+            if(data.toString().match(regExp)){
                 piranha.url = url;
                 piranha.count++;
             }
@@ -35,8 +36,8 @@ function get(url) {
 
 
 function findLink(text, url) {
-    var regExp = /href="[^http].+"/g;
-    var links = text.match(regExp);
+    let regExp = /href="[^http].+"/g;
+    let links = text.match(regExp);
     return links.map((href) => {
         let currentStr = href.replace('href="', '');
         currentStr = currentStr.replace('"', '');
