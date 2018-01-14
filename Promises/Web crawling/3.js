@@ -13,6 +13,17 @@ function get(url) {
 
         .then(function (data) {
             arrayLink.push(...findLink(data, url));
+            console.log(data);
+            return data;
+        })
+
+        .then(function (data) {
+            if(data.toString().includes("piranha")){
+                piranha.url = url;
+                piranha.count++;
+            }
+
+            console.log(piranha);
         })
 
         .catch(function(err) {
@@ -34,7 +45,9 @@ function findLink(text, url) {
     });
 }
 
-get("http://marijnhaverbeke.nl");
+
+
+get("http://marijnhaverbeke.nl/js1k");
 
 
 
