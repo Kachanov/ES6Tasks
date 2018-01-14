@@ -14,14 +14,25 @@ function get(url) {
         .then(function (data) {
             arrayLink.push(...findLink(data, url));
             console.log(data);
-            return data;
+            return arrayLink;
         })
 
-        .then(function (data) {
+        .then(function (arrayLink) {
             let regExp = /(piranha)/i;
-            if(data.toString().match(regExp)){
-                piranha.url = url;
-                piranha.count++;
+            console.log(arrayLink);
+            for(let i = 1; i < 6; i++){
+                let promise = fetch(arrayLink[i])
+                    .then(function (response) {
+                        return response.text();
+                    })
+
+                    .then(function (data) {
+                        if(data.toString().match(regExp)){
+                            piranha.url = arrayLink[i];
+                            piranha.count++;
+                            console.log(piranha);
+                        }
+                    })
             }
 
             console.log(piranha);
@@ -48,7 +59,7 @@ function findLink(text, url) {
 
 
 
-get("http://marijnhaverbeke.nl/js1k");
+get("http://marijnhaverbeke.nl");
 
 
 
