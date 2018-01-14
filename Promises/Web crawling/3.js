@@ -22,6 +22,7 @@ function get(url) {
     console.log(arrayLink);
 }
 
+
 function findLink(text, url) {
     var regExp = /href="[^http].+"/g;
     var links = text.match(regExp);
@@ -29,10 +30,8 @@ function findLink(text, url) {
         let currentStr = href.replace('href="', '');
         currentStr = currentStr.replace('"', '');
         currentStr = currentStr.replace('//', '/');
-        console.log(links);
-        return url + currentStr ;
-    });
+        return url + "/" + currentStr ;
+        });
 }
-
 
 get("http://marijnhaverbeke.nl");
