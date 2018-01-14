@@ -35,6 +35,7 @@ function findLink(text, url) {
         let currentStr = href.replace('href="', '');
         currentStr = currentStr.replace('"', '');
         currentStr = currentStr.replace('//', '/');
+        console.log(links);
         return url + currentStr ;
     });
 }
@@ -45,8 +46,9 @@ get("http://marijnhaverbeke.nl/").then(
         console.log("OK");
         console.log(arrayLink);
     },
-    fail => console.log("Error"))
-    .then(search => {
+    fail => console.log("Error"));
+
+/*    .then(search => {
         let request = new XMLHttpRequest();
         request.open("GET", "http://marijnhaverbeke.nl/js1k/", true);
         request.send();
@@ -55,11 +57,11 @@ get("http://marijnhaverbeke.nl/").then(
         }else{
             console.log(request.status);
         }
-        /*if(request.responseText.includes(substring)){
+        /!*if(request.responseText.includes(substring)){
             piranha.url = "http://marijnhaverbeke.nl/js1k/";
             piranha.count++;
-        }*/
-    });
+        }*!/
+    });*/
 
 
 
