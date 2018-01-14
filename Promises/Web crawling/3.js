@@ -12,7 +12,7 @@ function get(url) {
         })
 
         .then(function (data) {
-            arrayLink.push(findLink(data, url));
+            arrayLink.push(...findLink(data, url));
         })
 
         .catch(function(err) {
@@ -31,7 +31,11 @@ function findLink(text, url) {
         currentStr = currentStr.replace('"', '');
         currentStr = currentStr.replace('//', '/');
         return url + "/" + currentStr ;
-        });
+    });
 }
 
 get("http://marijnhaverbeke.nl");
+
+
+
+
