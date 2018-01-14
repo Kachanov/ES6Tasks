@@ -30,7 +30,10 @@ function get(url) {
                         if(data.toString().match(regExp)){
                             piranha.url = arrayLink[i];
                             piranha.count++;
+                            console.log("FIND PIRANHA ON THIS LINK: " + arrayLink[i]);
                             console.log(piranha);
+                        }else{
+                            console.log("on this link " + arrayLink[i] + " there is no 'piranha' ");
                         }
                     })
             }
