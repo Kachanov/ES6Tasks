@@ -5,7 +5,7 @@ var piranha = {
     count: 0
 };
 
-function get(url) {
+function get(url) {d
     let promise = fetch(url)
         .then(function (response) {
             return response.text();
