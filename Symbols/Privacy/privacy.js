@@ -4,11 +4,11 @@ class Queue {
     }
 
     put(elt) {
-        return this[Symbol.for('content')].push(elt);
+        return this[Symbol.for("content")].push(elt);
     }
 
     take() {
-        return this[Symbol.for('content')].shift();
+        return this[Symbol.for("content")].shift();
     }
 }
 
