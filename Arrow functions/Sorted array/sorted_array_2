@@ -5,10 +5,13 @@ class SortedArray {
         this.compare = compare;
     }
 
-    // [1,2] 3;
     findPos(element) {
-        const index = this.content.findIndex(item => this.compare(element, item) <= 0);
-        return element >= this.content[this.content.length - 1] ? this.content.length : index;
+        for(var i = 0; i < this.content.length; i++) {
+            if (this.compare(element, this.content[i]) < 0) {
+                break;
+            }
+        }
+        return i;
     }
 
     insert(element) {
